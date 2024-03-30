@@ -10,7 +10,7 @@
   <main>
       <h1>AlignedWords</h1>
       <div id="answer-space"></div>
-      <div id="word-space"></div>
+      <div id="clue-space"></div>
       <input id="slider" type="range"></input> Speed
   </main>
 <script>
@@ -955,24 +955,24 @@ var wordlist = [['APSE', 'semicircular church recess'],
  ['TÍO', 'Spanish for "uncle"'],
  ['ISAO', '____ Aoki, Japanese golfer']];
 
-var word_space = document.getElementById('word-space')
+var clue_space = document.getElementById('clue-space')
 var answer_space = document.getElementById('answer-space')
-var word_i = Math.floor(Math.random() * wordlist.length);
-word_space.innerText = wordlist[word_i][1];
-answer_space.innerText = '_ '.repeat(wordlist[word_i][0].replace('-', '').length);  // don't count hyphens in length
+var clue_i = Math.floor(Math.random() * wordlist.length);
+clue_space.innerText = wordlist[clue_i][1];
+answer_space.innerText = '_ '.repeat(wordlist[clue_i][0].replace('-', '').length);  // don't count hyphens in length
 var showing_answer = false;
 
 function onward(event) {
     if(!showing_answer) {  // show full answer
-        answer_space.innerText = wordlist[word_i][0];
+        answer_space.innerText = wordlist[clue_i][0];
         showing_answer = true;
     } else {  // proceed to next word
         do {
-          new_word_i = Math.floor(Math.random() * wordlist.length);
-        } while(word_i == new_word_i)
-        word_i = new_word_i
-        word_space.innerText = wordlist[word_i][1];
-        answer_space.innerText = '_ '.repeat(wordlist[word_i][0].replace('-', '').length);  // don't count hyphens in length
+          new_clue_i = Math.floor(Math.random() * wordlist.length);
+        } while(clue_i == new_clue_i)
+        clue_i = new_clue_i
+        clue_space.innerText = wordlist[clue_i][1];
+        answer_space.innerText = '_ '.repeat(wordlist[clue_i][0].replace('-', '').length);  // don't count hyphens in length
         showing_answer = false;
     }
     clearTimeout(interval_id)
