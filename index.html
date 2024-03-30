@@ -944,6 +944,7 @@ var word_space = document.getElementById('word-space')
 var answer_space = document.getElementById('answer-space')
 var word_i = Math.floor(Math.random() * wordlist.length);
 word_space.innerText = wordlist[word_i][1];
+answer_space.innerText = '_ '.repeat(wordlist[word_i][0].length);
 var showing_answer = false;
 
 function onward(event) {
@@ -951,12 +952,12 @@ function onward(event) {
         answer_space.innerText = wordlist[word_i][0];
         showing_answer = true;
     } else {  // proceed to next word
-        answer_space.innerText = '';
         do {
           new_word_i = Math.floor(Math.random() * wordlist.length);
         } while(word_i == new_word_i)
         word_i = new_word_i
         word_space.innerText = wordlist[word_i][1];
+        answer_space.innerText = '_ '.repeat(wordlist[word_i][0].length);
         showing_answer = false;
     }
     clearTimeout(interval_id)
